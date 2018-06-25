@@ -11,3 +11,11 @@ exports.addUser = function(req, res){
         res.json({message: 'the user was created successfully'});
     });
 }
+
+exports.getUsers = function(req, res){
+    model.find(function(err, users){
+        if(err) res.json({err: err, message: 'Something went wrong'});
+        res.json(users);
+    });
+}
+
