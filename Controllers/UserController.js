@@ -19,3 +19,10 @@ exports.getUsers = function(req, res){
     });
 }
 
+exports.deleteUser = function(req, res){
+    var options = {_id: req.params.id};
+    model.remove(options, function(err){
+        if(err) res.json({err: err, message: 'The user could not be deleted'});
+        res.json({message: 'The user was deleted successfully'});
+    });
+}
