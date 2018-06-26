@@ -9,4 +9,6 @@ router.post('/create', userController.addUser);
 
 router.delete('/delete/:id', userController.deleteUser);
 
+router.get('/search/:key/:value', userController.getUserByParam);
+
 module.exports = router;
