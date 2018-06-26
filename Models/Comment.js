@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
 var CommentSchema = mongoose.Schema({
-    name: String,
     time: Date,
     commentBody: String,
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
