@@ -65,8 +65,8 @@ exports.updateUser = function(req, res){
         password: req.body.password
     };
 
-    model.findByIdAndUpdate(id, update, function(err, data){
+    model.findByIdAndUpdate(id, update, function(err){
         if(err) res.json({err: err, message: `The user could not be updated`});
-        res.json({message: data});
+        res.json({message: update});
     });
 }
