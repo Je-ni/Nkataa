@@ -26,3 +26,34 @@ exports.deleteUser = function(req, res){
         res.json({message: 'The user was deleted successfully'});
     });
 }
+
+exports.getUserByParam = function(req, res){
+    var key = req.params.key;
+    console.log(key);
+    var value = req.params.value;
+    switch (key){
+        case 'id':
+        model.findById(value, '-password', function(err, data){
+            if(err) res.json({err: err, message: `The user with id:${value} could not be found`});
+            res.json({message: data});
+        });
+        break;
+
+        case 'name':
+        model.find({name: value}, '-password', function(err, data){
+            if(err) res.json({err: err, message: `The user with name: ${value} could not be found`});
+            res.json({message: data});
+        });
+        break;
+
+        case 'email':
+        model.findOne({email: value}, '-password', function(err, data){
+            if(err) res.json({err: err, message: `The email: ${value} could not be found`});
+            res.json({message: data});
+        });
+        break;
+
+        default:
+        res.json({message: 'Resource could not be found'});
+    }
+}
