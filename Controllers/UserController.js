@@ -29,7 +29,6 @@ exports.deleteUser = function(req, res){
 
 exports.getUserByParam = function(req, res){
     var key = req.params.key;
-    console.log(key);
     var value = req.params.value;
     switch (key){
         case 'id':
@@ -56,4 +55,18 @@ exports.getUserByParam = function(req, res){
         default:
         res.json({message: 'Resource could not be found'});
     }
+}
+
+exports.updateUser = function(req, res){
+    id = req.params.id;
+    update = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+    };
+
+    model.findByIdAndUpdate(id, update, function(err, data){
+        if(err) res.json({err: err, message: `The user could not be updated`});
+        res.json({message: data});
+    });
 }
