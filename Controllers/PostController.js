@@ -37,3 +37,11 @@ exports.updatePost = function(req, res){
         res.json({message: 'the post was successfully edited'});
     });
 }
+
+exports.getPostsByUser = function(req, res){
+    var userId = {user: req.params.id};
+    model.find(userId, '-user', function(err, data){
+        if(err) res.json({err: err, message: `No posts by ${userId}`});
+        res.json({message: data});
+});
+};
