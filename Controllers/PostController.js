@@ -2,7 +2,9 @@ var model = require('../Models/Post');
 
 exports.addPost = function(req, res){
     var data = {
-        postBody: req.body.postBody
+        user: req.body.user,
+        time: new Date(),
+        postBody: req.body.postBody,
     }
     model.create(data, function(err){
         if(err) res.json({err: err, message: 'the post could not be created'});
@@ -20,10 +22,11 @@ exports.getPosts = function(req, res){
 exports.deletePosts = function(req, res){
     var options = {_id: req.params.id};
     model.remove(options, function(err){
-        if(err) res.json({err: err, message: 'The post could not be deleted'});
-        res.json({message: 'The post was deleted successfully'});
+        if(err) res.json(err);
+        res.json({message: 'success'});
     });
 }
+
 
 exports.updatePost = function(req, res){
     id = req.params.id;
