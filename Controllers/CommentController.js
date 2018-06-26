@@ -2,8 +2,8 @@ var model = require('../Models/Comment');
 
 exports.addComment = function(req, res){
     var data = {
-        post: req.body.postId,
-        user: req.body.userId,
+        post: req.body.post,
+        user: req.body.user,
         time: new Date(),
         commentBody: req.body.commentBody
     };
@@ -13,61 +13,31 @@ exports.addComment = function(req, res){
     });
 }
 
-exports.getUsers = function(req, res){
-    model.find(function(err, users){
+exports.getCommentsByPost = function(req, res){
+    var post = {post: req.param.id};
+    model.find(post, function(err, comments){
         if(err) res.json({err: err, message: 'Something went wrong'});
-        res.json(users);
+        res.json(comments);
     });
 }
 
-exports.deleteUser = function(req, res){
+exports.deleteComment = function(req, res){
     var options = {_id: req.params.id};
     model.remove(options, function(err){
-        if(err) res.json({err: err, message: 'The user could not be deleted'});
-        res.json({message: 'The user was deleted successfully'});
+        if(err) res.json({err: err, message: 'The comment could not be deleted'});
+        res.json({message: 'The comment was deleted successfully'});
     });
 }
 
-exports.getUserByParam = function(req, res){
-    var key = req.params.key;
-    var value = req.params.value;
-    switch (key){
-        case 'id':
-        model.findById(value, '-password', function(err, data){
-            if(err) res.json({err: err, message: `The user with id:${value} could not be found`});
-            res.json({message: data});
-        });
-        break;
-
-        case 'name':
-        model.find({name: value}, '-password', function(err, data){
-            if(err) res.json({err: err, message: `The user with name: ${value} could not be found`});
-            res.json({message: data});
-        });
-        break;
-
-        case 'email':
-        model.findOne({email: value}, '-password', function(err, data){
-            if(err) res.json({err: err, message: `The email: ${value} could not be found`});
-            res.json({message: data});
-        });
-        break;
-
-        default:
-        res.json({message: 'Resource could not be found'});
-    }
-}
-
-exports.updateUser = function(req, res){
+exports.updateComment = function(req, res){
     id = req.params.id;
     update = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
+        time: new Date(),
+        commentBody: req.body.commentBody,
     };
 
     model.findByIdAndUpdate(id, update, function(err){
-        if(err) res.json({err: err, message: `The user could not be updated`});
+        if(err) res.json({err: err, message: `The comment could not be updated`});
         res.json({message: update});
     });
 }
