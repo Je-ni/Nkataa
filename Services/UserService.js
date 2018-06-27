@@ -27,3 +27,9 @@ exports.deleteUser = function(req, res, options){
         res.json({message: 'The user was deleted successfully'});
     });
 }
+exports.updateUser = function(req, res, id, options){
+    repo.update(id, options, function(err){
+        if(err) res.json({err: err, message: `The user could not be updated`});
+        res.json({message: update});
+    });
+}
