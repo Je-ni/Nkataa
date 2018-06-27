@@ -18,13 +18,13 @@ exports.deletePost = function(req, res){
     return service.deletePost(req, res, option);
 }
 
-exports.getPostByParam = function(req, res){
+exports.getPostsByParam = function(req, res){
     var option = req.query;
     return service.getPostsByParam(req, res, option);
 }
 
 exports.updatePost = function(req, res){
     id = req.params.id;
-    update = req.body;
+    update = {postBody: req.body.postBody};
     return service.updatePost(req, res, id, update);    
 }
