@@ -25,6 +25,8 @@ exports.getPostsByParam = function(req, res){
 
 exports.updatePost = function(req, res){
     id = req.params.id;
-    update = {postBody: req.body.postBody};
+    update = {
+        time: new Date(),
+        postBody: req.body.postBody};
     return service.updatePost(req, res, id, update);    
 }
