@@ -24,5 +24,7 @@ exports.getUserByParam = function(req, res){
 }
 
 exports.updateUser = function(req, res){
-    
+    id = req.params.id;
+    update = req.body;
+    return service.updateUser(req, res, id, update);    
 }
