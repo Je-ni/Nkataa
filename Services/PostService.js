@@ -14,8 +14,8 @@ exports.getAllPosts = function(req, res){
     });
 }
 
-exports.getPostsByUser = function(req, res, options){
-    repo.get(options, '', function(err, users){
+exports.getPostsByParam = function(req, res, options){
+    repo.get(options, '', function(err, posts){
         if(err) res.json({err: err, message: 'Something went wrong'});
         res.json(posts);
     });
