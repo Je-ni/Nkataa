@@ -4,8 +4,8 @@ function BaseRepo(model){
     this.model = model;
 }
 
-BaseRepo.prototype.get = function(callback){
-    this.model.find(callback);
+BaseRepo.prototype.get = function(option, structure, callback){
+    this.model.find(option, structure, callback);
 }
 
 BaseRepo.prototype.add = function(data, callback){
@@ -14,10 +14,6 @@ BaseRepo.prototype.add = function(data, callback){
 
 BaseRepo.prototype.getById = function(id, callback){
     this.model.findById(id, callback);
-}
-
-BaseRepo.prototype.getByParam = function(option, callback){
-    model.find(option, callback);
 }
 
 BaseRepo.prototype.delete = function(options, callback){
