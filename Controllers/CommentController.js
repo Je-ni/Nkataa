@@ -15,7 +15,7 @@ exports.getComments = function(req, res){
 }
 
 exports.getPostComments = function(req, res){
-    var post = {post: req.param.id};
+    var post = {post: req.params.id};
     return service.getCommentsInPost(req, res, post);
 }
 
