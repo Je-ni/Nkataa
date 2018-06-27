@@ -3,6 +3,8 @@ var router = express.Router();
 var commentController = require('../Controllers/CommentController');
 
 /* GET comments listing. */
+router.get('', commentController.getComments);
+
 router.get('/:id', commentController.getPostComments);
 
 router.post('/add', commentController.addComment);

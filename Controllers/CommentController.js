@@ -10,8 +10,12 @@ exports.addComment = function(req, res){
     return service.addComment(req, res, data);
 }
 
+exports.getComments = function(req, res){
+    return service.getAllComments(req, res);
+}
+
 exports.getPostComments = function(req, res){
-    post = {_id: req.param.id};
+    var post = {post: req.param.id};
     return service.getCommentsInPost(req, res, post);
 }
 

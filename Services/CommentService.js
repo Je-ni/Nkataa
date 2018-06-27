@@ -7,6 +7,13 @@ exports.addComment = function(req, res, comment){
     });
 }
 
+exports.getAllComments = function(req, res){
+    repo.get({}, '', function(err, comments){
+        if(err) res.json({err: err, message: 'Something went wrong'});
+        res.json(comments);
+    });
+}
+
 exports.getCommentsInPost = function(req, res, options){
     repo.get(options, '', function(err, posts){
         if(err) res.json({err: err, message: 'Something went wrong'});
