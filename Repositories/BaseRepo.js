@@ -25,5 +25,5 @@ BaseRepo.prototype.update = function(id, options, callback){
 }
 
 module.exports = function(model){
-    new BaseRepo(model);
+    return new BaseRepo(model);
 };

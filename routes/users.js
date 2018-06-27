@@ -9,7 +9,7 @@ router.post('/create', userController.addUser);
 
 router.delete('/delete/:id', userController.deleteUser);
 
-router.get('/search/:key/:value', userController.getUserByParam);
+router.get('/search', userController.getUserByParam);
 
 router.post('/update/:id', userController.updateUser);
 
