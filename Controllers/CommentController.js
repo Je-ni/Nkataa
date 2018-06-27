@@ -19,13 +19,11 @@ exports.deleteComment = function(req, res){
     return service.deleteComment(req, res, option);
 }
 
-exports.getCommentsByParam = function(req, res){
-    var option = req.query;
-    return service.getCommentsByParam(req, res, option);
-}
-
 exports.updateComment = function(req, res){
     id = req.params.id;
-    update = {commentBody: req.body.commentBody};
+    update = {
+        time: Date.now(),
+        commentBody: req.body.commentBody
+    };
     return service.updateComment(req, res, id, update);    
 }
