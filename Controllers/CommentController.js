@@ -10,8 +10,8 @@ exports.addComment = function(req, res){
     return service.addComment(req, res, data);
 }
 
-exports.getComments = function(req, res){
-    return service.getAllComments(req, res);
+exports.getPostComments = function(req, res){
+    return service.getCommentsInPost(req, res);
 }
 
 exports.deleteComment = function(req, res){
