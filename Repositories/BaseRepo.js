@@ -27,3 +27,5 @@ BaseRepo.prototype.delete = function(options, callback){
 BaseRepo.prototype.update = function(id, options, callback){
     this.model.findByIdAndUpdate(id, options, callback);
 }
+
+module.exports = new BaseRepo(model);
