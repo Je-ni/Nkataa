@@ -20,3 +20,10 @@ exports.getUsersByParam = function(req, res, options){
         res.json(users);
     });
 }
+
+exports.deleteUser = function(req, res, options){
+    repo.delete(options, function(err){
+        if(err) res.json({err: err, message: 'The user could not be deleted'});
+        res.json({message: 'The user was deleted successfully'});
+    });
+}
