@@ -2,6 +2,7 @@ var service = require('../Services/CommentService');
 
 exports.addComment = function(req, res){
     var data = {
+        post: req.body.post,
         user: req.body.user,
         time: Date.now(),
         commentBody: req.body.commentBody
