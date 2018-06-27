@@ -28,4 +28,6 @@ BaseRepo.prototype.update = function(id, options, callback){
     this.model.findByIdAndUpdate(id, options, callback);
 }
 
-module.exports = new BaseRepo(model);
+module.exports = function(model){
+    new BaseRepo(model)
+};
