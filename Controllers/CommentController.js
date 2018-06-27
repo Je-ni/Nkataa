@@ -11,7 +11,8 @@ exports.addComment = function(req, res){
 }
 
 exports.getPostComments = function(req, res){
-    return service.getCommentsInPost(req, res);
+    post = {_id: req.param.id};
+    return service.getCommentsInPost(req, res, post);
 }
 
 exports.deleteComment = function(req, res){
