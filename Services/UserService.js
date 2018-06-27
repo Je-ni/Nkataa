@@ -6,3 +6,10 @@ exports.getAllUsers = function(req, res){
         res.json(users);
     });
 }
+
+exports.getUsersByParam = function(req, res, options){
+    repo.get(options, '-password', function(err, users){
+        if(err) res.json({err: err, message: 'Something went wrong'});
+        res.json(users);
+    });
+}
