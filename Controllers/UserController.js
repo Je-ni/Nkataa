@@ -14,7 +14,8 @@ exports.getUsers = function(req, res){
 }
 
 exports.deleteUser = function(req, res){
-    
+    var option = {_id: req.params.id};
+    return service.deleteUser(req, res, option);
 }
 
 exports.getUserByParam = function(req, res){
