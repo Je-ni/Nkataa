@@ -14,23 +14,23 @@ exports.getAllPosts = function(req, res){
     });
 }
 
-exports.getUsersByParam = function(req, res, options){
-    repo.get(options, '-password', function(err, users){
+exports.getPostsByUser = function(req, res, options){
+    repo.get(options, '', function(err, users){
         if(err) res.json({err: err, message: 'Something went wrong'});
-        res.json(users);
+        res.json(posts);
     });
 }
 
-exports.deleteUser = function(req, res, options){
+exports.deletePost = function(req, res, options){
     repo.delete(options, function(err){
-        if(err) res.json({err: err, message: 'The user could not be deleted'});
-        res.json({message: 'The user was deleted successfully'});
+        if(err) res.json({err: err, message: 'The post could not be deleted'});
+        res.json({message: 'The post was deleted successfully'});
     });
 }
 
-exports.updateUser = function(req, res, id, options){
+exports.updatePost = function(req, res, id, options){
     repo.update(id, options, function(err){
-        if(err) res.json({err: err, message: `The user could not be updated`});
+        if(err) res.json({err: err, message: `The post could not be updated`});
         res.json({message: update});
     });
 }
