@@ -13,7 +13,7 @@ exports.addPost = function(req, res, data){
 }
 
 exports.getAllPosts = function(req, res){
-    repo.get({}, '', {path: 'user', select: 'name'}, 'comments', function(err, posts){
+    repo.get({}, '', {path: 'user', select: 'name'}, {path: 'comments', select: '-post'}, function(err, posts){
         if(err) res.json({err: err, message: 'Something went wrong'});
         res.json(posts);
     });
