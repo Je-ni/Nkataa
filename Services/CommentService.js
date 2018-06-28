@@ -13,7 +13,7 @@ exports.addComment = function(req, res, data){
 }
 
 exports.getAllComments = function(req, res){
-    repo.get({}, '',{path: 'user', select: 'name'}, {path: 'post', select:'-comments'}, function(err, comments){
+    repo.get({}, '-__v',{path: 'user', select: 'name'}, {path: 'post', select:'-comments -__v'}, function(err, comments){
         if(err) res.json({err: err, message: 'Something went wrong'});
         res.json(comments);
     });
