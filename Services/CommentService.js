@@ -1,9 +1,14 @@
 var repo = require('../Repositories/CommentRepo');
+var postRepo = require('../Repositories/PostRepo');
 
-exports.addComment = function(req, res, comment){
-    repo.add(comment, function(err){
-        if(err) res.json({err: err, message: 'the comment could not be created'});
-        res.json({message: 'the comment was created successfully'});
+exports.addComment = function(req, res, data){
+    repo.add(data, function(err, comment){
+        postRepo.getById(data.post, function(err, post){
+            post.comments.push(comment._id);
+            post.save();
+            if(err) res.json({err: err, message: 'the comment could not be created'});
+            res.json({message: 'the comment was created successfully'});
+        })
     });
 }
 
