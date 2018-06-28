@@ -8,7 +8,7 @@ exports.addUser = function(req, res, user){
 }
 
 exports.getAllUsers = function(req, res){
-    repo.get({}, '-password', '[posts]','', function(err, users){
+    repo.get({}, '-password', 'posts','', function(err, users){
         if(err) res.json({err: err, message: 'Something went wrong'});
         res.json(users);
     });

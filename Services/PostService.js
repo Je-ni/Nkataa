@@ -1,9 +1,14 @@
 var repo = require('../Repositories/PostRepo');
+var userRepo = require('../Repositories/UserRepo');
 
-exports.addPost = function(req, res, post){
-    repo.add(post, function(err){
-        if(err) res.json({err: err, message: 'the post could not be created'});
-        res.json({message: 'the post was created successfully'});
+exports.addPost = function(req, res, data){
+    repo.add(data, function(err, post){
+        userRepo.getById(data.user, function(err, user){
+            user.posts.push(post._id);
+            user.save();
+            if(err) res.json({err: err, message: 'the post could not be created'});
+            res.json({message: 'the post was created successfully'});
+        })
     });
 }
 
