@@ -8,14 +8,14 @@ exports.addPost = function(req, res, post){
 }
 
 exports.getAllPosts = function(req, res){
-    repo.get({}, '', 'user', 'comments', function(err, posts){
+    repo.get({}, '', {path: 'user', select: 'name'}, 'comments', function(err, posts){
         if(err) res.json({err: err, message: 'Something went wrong'});
         res.json(posts);
     });
 }
 
 exports.getPostsByParam = function(req, res, options){
-    repo.get(options, '', 'user', 'comments', function(err, posts){
+    repo.get(options, '', {path: 'user', select: 'name'}, 'comments', function(err, posts){
         if(err) res.json({err: err, message: 'Something went wrong'});
         res.json(posts);
     });
