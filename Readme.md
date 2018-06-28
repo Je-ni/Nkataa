@@ -41,7 +41,7 @@ Ensure that your server is running and that you install all node dependencies.
 You can run this on your local server using the port 3000.
 
 ## Testing
-I tested this API using Google's Advanced Rest Client and Postman
+I tested this app using Google's Advanced Rest Client and Postman
 
 ## Contributing
 1. Fork it!
